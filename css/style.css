@@ -1,0 +1,363 @@
+/* Grundläggande inställningar */
+* {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+  
+  body {
+    font-family: Arial, sans-serif; 
+    color: white;
+    background: linear-gradient(96deg, rgba(12,22,77,1) 35%, rgba(0,0,0,1) 100%); 
+    background-size: cover; 
+    background-repeat: no-repeat;
+  }
+
+
+
+
+  
+  /* Header för sidans topp */
+  header {
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+  
+  header div {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-end; 
+  }
+  
+  h1 {
+    font-family: 'Secular One', sans-serif;
+    letter-spacing: 20px;
+    font-size: 2.5rem;
+  }
+  
+  h3 {
+    font-family: 'Lora', serif;
+    letter-spacing: 10px;
+    font-size: 1rem;
+    color: #FFD029;
+  }
+
+
+
+  
+
+  /* Layout för huvudinnehåll */
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    min-height: 100vh;
+  }
+
+
+
+
+  
+  /* Planeter */
+  .planet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 0.8rem;
+    text-align: center;
+    border-radius: 50%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .planet:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); 
+  }
+  
+  #planet-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70vh; 
+    overflow: hidden; 
+  }
+  
+
+
+
+  /* Specifik styling för olika planeter */
+  .planet:first-child {  /* solen */
+    background: radial-gradient(circle, #f06d06, #c94c00); 
+    border: 3px solid #f06d06; 
+  }
+  
+  .planet:nth-child(2) {
+    background: #888888; /* Merkurius */
+    width: 16px;
+    height: 16px;
+  }
+  
+  .planet:nth-child(3) {
+    background: #E7cdcd; /* Venus */
+    width: 26px;
+    height: 26px;
+  }
+  
+  .planet:nth-child(4) {
+    background: dodgerblue; /* Jorden */
+  }
+
+  .planet:nth-child(5) {
+    background-color: #EF5F5F; /* Mars */
+  }
+
+  .planet:nth-child(6) {
+    background-color: #E29468; /* Jupiter */
+  }
+  
+  .planet:nth-child(7) {
+    background-color: #C7AA72; /* Saturnus */
+  }
+  
+  .planet:nth-child(8) {
+    background-color: #557395; /* Uranus */
+  }
+
+  .planet:last-child {
+    background-color: #214f7c; /* Neptunus */
+  }
+  
+
+  
+
+
+  /* Overlay som täcker skärmen */
+  #overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Täcker hela visningshöjden */
+    background: linear-gradient(96deg, rgba(14, 23, 73, 1) 35%, rgba(25, 12, 37, 1) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+  }
+  
+  #overlay.hidden {
+    display: none;
+  }
+  
+  #overlay-content {
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    text-align: left; 
+  }
+  
+  #overlay-content h1 {
+    font-size: 2rem;
+  }
+  
+  #overlay-content h3 {
+    font-size: 1.5rem;
+    color: #FFD029;
+  }
+  
+  #details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+
+/* Blå planet */
+#overlay::after {
+  content: '';
+  position: absolute;
+  width: 30vw;
+  height: 40vw;
+  border-radius: 50%; 
+  background: dodgerblue;
+  top: 50%; 
+  left: -30%;
+  transform: translateY(-50%); 
+  z-index: -2; 
+
+  box-shadow: 
+  0 0 20px 5px rgba(30, 144, 255, 0.6),
+  0 0 20px 5px rgba(30, 144, 255, 0.6), 
+  0 0 20px 5px rgba(30, 144, 255, 0.3), 
+  0 0 40px 15px rgba(30, 144, 255, 0.3);
+}
+
+
+
+  /* Textjustering i overlay */
+.detail-item {
+    text-align: center;
+    text-align: left; 
+
+  }
+  
+  .detail-item strong {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  #overlay-content p {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-weight: 100;
+    color: white;
+  }
+  
+
+  #moons {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    text-align: left;
+
+  }
+  
+  #moons li {
+    font-style: italic;
+    margin-bottom: 5px;
+  }
+  
+
+
+  .line {
+    width: 100%; 
+    height: 1px; 
+    background-color: white;
+    margin: 20px 0; 
+    border: none; 
+  }
+
+
+
+
+  .stars {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    /* pointer-events: none;  */
+  }
+  
+  
+/* .stars {
+    position: absolute;
+    width: 3px; 
+    height: 3px;
+    background-color: white;
+    border-radius: 50%;
+    animation: twinkling 2s infinite; 
+    z-index: -1; 
+} */
+
+
+
+/* Logo */
+.image {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.image img {
+    max-width: 100%; 
+    height: auto;
+    filter: invert(1); 
+
+
+}
+
+
+  
+  /* stängningsknappen */
+  #close-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1100; 
+  }
+  
+  #close-overlay:hover {
+    color: #712c3f; 
+  }
+
+
+
+
+
+  /* Media Queries för responsiv design */
+  @media (max-width: 1440px) {
+    #overlay::after {
+      width: 50vw; 
+      height: 50vw;
+      left: -35%; 
+    }
+  
+    #overlay::before {
+      box-shadow: 
+        30vw 10vh 1px rgba(255, 255, 255, 0.6), 
+        40vw 30vh 2px rgba(255, 255, 255, 0.8),
+        25vw 50vh 1px rgba(255, 255, 255, 0.4);
+    }
+  }
+  
+  /* För större skärmar (1441px till 1920px) */
+  @media (min-width: 1441px) and (max-width: 1920px) {
+    #overlay::after {
+      width: 40vw; 
+      height:45vw;
+      left: -25%; 
+    }
+    #overlay::before {
+      box-shadow: 
+        30vw 10vh 1px rgba(255, 255, 255, 0.6), 
+        40vw 30vh 2px rgba(255, 255, 255, 0.8),
+        25vw 50vh 1px rgba(255, 255, 255, 0.4);
+    }
+  }
+  
+  /* För mycket stora skärmar (1921px och uppåt) */
+  @media (min-width: 1921px) {
+    #overlay::after {
+      width: 45vw; 
+      height: 45vw;
+      left: -20%; 
+    }
+    #overlay::before {
+      box-shadow: 
+        30vw 10vh 1px rgba(255, 255, 255, 0.6), 
+        40vw 30vh 2px rgba(255, 255, 255, 0.8),
+        25vw 50vh 1px rgba(255, 255, 255, 0.4);
+    }
+  }
+
