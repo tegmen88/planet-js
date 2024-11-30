@@ -84,7 +84,7 @@ export const renderPlanets = (bodies, onPlanetClick) => {
     
         // Slumpmässiga positioner
         const x = Math.random() * 100; // Mellan 0% och 100%
-        const y = Math.random() * 100; // Mellan 0% och 100%
+        const y = Math.random() * 100;
     
         star.style.left = `${x}%`;
         star.style.top = `${y}%`;
@@ -110,10 +110,23 @@ export const renderPlanets = (bodies, onPlanetClick) => {
   export const hideOverlay = () => {
     const overlay = document.getElementById('overlay');
     overlay.classList.add('hidden');
+    console.log("closied overlay");
   };
   
   // Eventlyssnare för att stänga overlay
  // document.getElementById('close-overlay').addEventListener('click', hideOverlay);
   //const overlay = document.getElementById('overlay');
   
+// en lyssnare för tangenttryckningar
+document.addEventListener('keydown', (event) => {
+    const overlay = document.getElementById('overlay');
+    
+    if ((event.key === 'Escape' || event.key === 'Enter') || !overlay.classList.contains('hidden')) {
+      hideOverlay(); 
+    } 
+
+    // else if (!overlay.classList.contains('hidden')) {
+    //   hideOverlay();
+    // }
+  });
   
